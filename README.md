@@ -28,6 +28,14 @@ differently from code that is a blob.
   Cursor agent); instructions assume opencode. No git? See
   "No git? The fallback" below.
 
+## Get the lab
+
+```bash
+git clone https://github.com/uzzielperez/raymundus-llullus-lab.git
+cd raymundus-llullus-lab
+git tag -l          # v1-amoeba  v2-nerve-net  v3-head  v4-cns
+```
+
 ## The session (≈60–90 min)
 
 ### Act 1 — the amoeba (10 min)
