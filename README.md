@@ -12,6 +12,7 @@ session history *is* the curriculum.
 | `v2-nerve-net` | jellyfish | handlers with roles — still no memory |
 | `v3-head` | head | brain (log-space fit) + spine (`verify()`) + reflex + `results.json` |
 | `v4-cns` | engineered agent | loop, judge-of-done, episodic + semantic memory, budget |
+| `v5-dreamer` | the night shift | offline replay → lessons the awake loop **reads back** → prune → relapse → re-learn |
 
 ## The physics
 
@@ -101,6 +102,33 @@ Note the two memories with different lifetimes (`results.json` episodic,
 *without* being told the design — only the checklist from the deck
 (loop / spine / reflexes / organs / proprioception / judge). Compare its
 solution to `git diff v3-head v4-cns`. Differences are the discussion.
+
+### Act 5 — the dreamer (20 min, the finale)
+
+```bash
+git checkout v5-dreamer
+rm -f results.json lessons.md
+python3 fit_xsec.py        # x3 — all FAIL: an uncalibrated low-E bin biases A
+python3 fit_xsec.py --dream
+python3 fit_xsec.py        # passes on iteration 1 — the dream is now a sense organ
+```
+
+The dream (`--dream`) never touches the data: it replays failures,
+**consolidates** a recurring error tag into an evidence-backed lesson,
+and the next awake run *reads that lesson and guards the bad bin*.
+Then the long game:
+
+```bash
+for i in $(seq 12); do python3 fit_xsec.py > /dev/null; done
+python3 fit_xsec.py --dream     # prune: lesson quiet for 12 episodes → retired
+python3 fit_xsec.py             # RELAPSE — the bias is back
+python3 fit_xsec.py --dream     # the dream re-learns, from fresh evidence
+```
+
+That relapse is the point: memory hygiene is not free, and the
+dreamer is not a one-time patch — it is a **metabolism**.
+Note what the dreamer can never edit: `judge()`. The spine sits
+outside the dream, on purpose (deck Act 8, honesty slide).
 
 ## No git? The fallback
 
